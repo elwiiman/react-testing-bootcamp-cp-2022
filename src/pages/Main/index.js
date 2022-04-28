@@ -23,7 +23,7 @@ function Main() {
   const today = format(new Date(), 'yyyy-MM-dd');
   const date = useInput(today);
 
-  const { isLoading, error, data = {}, isError } = useQuery(
+  const { error, data = {}, isError } = useQuery(
     ['getPictureOfTheDay', date.value],
 
     async () => {
