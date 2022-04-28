@@ -32,13 +32,25 @@ export const DataContainer = styled.div`
 `;
 
 export const ImageContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   width: 50%;
+  margin: 15px;
 `;
+
+export const ImageTitleContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
 export const StyledImage = styled.img`
   padding: 5px;
   width: 100%;
   margin: 5px;
-  max-height: 500px;
+  max-height: 480px;
   object-fit: fill;
   border-radius: 10px;
 `;

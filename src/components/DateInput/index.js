@@ -17,6 +17,7 @@ function DateInput({ name, placeHolder, value, onChange }) {
       value={value}
       type="date"
       onChange={onChange}
+      data-testid="date-input"
     />
   );
 }

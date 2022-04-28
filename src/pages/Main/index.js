@@ -15,6 +15,7 @@ import {
   ImageContainer,
   TitleContainer,
   StyledMainPage,
+  ImageTitleContainer,
 } from './styled';
 import notFoundImg from '../../images/notFound.png';
 
@@ -23,7 +24,7 @@ function Main() {
   const date = useInput(today);
 
   const { isLoading, error, data = {}, isError } = useQuery(
-    ['repoData', date.value],
+    ['getPictureOfTheDay', date.value],
 
     async () => {
       let response;
@@ -36,13 +37,17 @@ function Main() {
           throw new Error(jsonError.msg);
         });
       }
-
       return response.json();
     },
     { retry: 0, refetchOnWindowFocus: false }
   );
 
-  const { url = '', title = '', explanation = '' } = data;
+  const {
+    url = '',
+    title = '',
+    explanation = '',
+    date: pictureDate = '',
+  } = data;
 
   return (
     <StyledMainPage>
@@ -57,6 +62,11 @@ function Main() {
 
         <DataContainer>
           <ImageContainer>
+            <ImageTitleContainer>
+              <h2 style={{ width: '70%' }}>{title}</h2>
+              <p>{pictureDate}</p>
+            </ImageTitleContainer>
+
             <StyledImage src={!isError ? url : notFoundImg} alt={title} />
           </ImageContainer>
 
